@@ -46,7 +46,7 @@ class Affine:
         W, b = self.params
         out = np.dot(x, W) + b
         self.x = x
-        return x
+        return out
 
     def backward(self, dout):
         W, b = self.params
