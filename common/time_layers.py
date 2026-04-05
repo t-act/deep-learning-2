@@ -32,7 +32,7 @@ class RNN:
         return dx, dh_prev
     
 
-class TimeRnn:
+class TimeRNN:
     def __init__(self, Wx, Wh, b, stateful=False):
         self.params = [Wx, Wh, b]
         self.grads = [np.zeros_like(Wx), np.zeros_like(Wh), np.zeros_like(b)]
@@ -85,5 +85,5 @@ class TimeRnn:
         for i, grad in enumerate(grads):
             self.grads[i][...] = grad
         self.dh = dh
-        
+
         return dxs
