@@ -48,7 +48,7 @@ offsets = [i * jump for i in range(batch_size)]
 
 for epoch in range(max_epoch):
     for iter in range(max_iters):
-        # 2. ミニバッチの取得
+        # 2. ミニバッチの取得 get_batch(x, t, batch_size, time_size)
         batch_x = np.empty((batch_size, time_size), dtype="i")
         batch_t = np.empty((batch_size, time_size), dtype="i")
         for t in range(time_size):
