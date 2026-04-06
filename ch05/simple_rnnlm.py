@@ -12,8 +12,8 @@ class SimpleRnnlm:
             # Xavierの初期化
             # 層を通しても値の大きさが変わらないようにするため
         embed_W = (rn(V, D) / 100).astype("f")
-        rnn_Wx = (rn(V, D) / np.aqrt(D)).astype("f")
-        rnn_Wh = (rn(D, H) / np.aqrt(H)).astype("f")
+        rnn_Wx = (rn(D, H) / np.sqrt(D)).astype("f")
+        rnn_Wh = (rn(H, H) / np.sqrt(H)).astype("f")
         rnn_b = np.zeros(H).astype("f")
         affine_W = (rn(H, V) / np.sqrt(H)).astype("f")
         affine_b = np.zeros(V).astype("f")
@@ -28,10 +28,10 @@ class SimpleRnnlm:
         self.rnn_layer = self.layers[1] # TimeRNNを使用
 
         # すべての重みと勾配をリストにまとめる
-        self.params, self.gards = [], []
+        self.params, self.grads = [], []
         for layer in self.layers:
             self.params += layer.params
-            self.gards += layer.grads
+            self.grads += layer.grads
     
     def forward(self, xs, ts):
         for layer in self.layers:
