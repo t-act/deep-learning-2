@@ -24,7 +24,7 @@ class Rnnlm:
             TimeAffine(affine_W, affine_b)
         ]
         self.loss_layer = TimeSoftmaxWithLoss()
-        self.lstm_layer = self.layer[1]
+        self.lstm_layer = self.layers[1]
 
         # すべての勾配と重みをリストにまとめる
         self.params, self.grads = [], []

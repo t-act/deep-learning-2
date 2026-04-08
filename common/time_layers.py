@@ -209,7 +209,7 @@ class LSTM:
 
     def forward(self, x, h_prev, c_prev):
         Wx, Wh, b = self.params
-        N, H = h_prev.shpe
+        N, H = h_prev.shape
 
         A = np.dot(x, Wx) + np.dot(h_prev, Wh) + b
 
