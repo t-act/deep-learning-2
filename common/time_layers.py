@@ -240,6 +240,7 @@ class LSTM:
 
         dc_prev = ds * f
 
+        # ゲートの計算
         di = ds * g
         df = ds * c_prev
         do = dh_next * tanh_c_next
@@ -252,6 +253,7 @@ class LSTM:
 
         dA = np.hstack((df, dg, di, do))
 
+        # Affine層の計算
         dWh = np.dot(h_prev.T, dA)
         dWx = np.dot(x.T, dA)
         db = dA.sum(axis=0)
