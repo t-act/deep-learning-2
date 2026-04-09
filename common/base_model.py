@@ -3,7 +3,6 @@ sys.path.append('..')
 import os
 import pickle
 import numpy as np
-from common.np import *
 
 
 class BaseModel:

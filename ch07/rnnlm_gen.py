@@ -16,7 +16,7 @@ class RnnlmGen(Rnnlm):
             score = self.predict(x)
             p = softmax(score.flatten())
 
-            sampled = np.random.choice(len(p), size=1, p=p)
+            sampled = np.random.choice(len(p), p=p)
             if (skip_ids is None) or (sampled not in skip_ids):
                 x = sampled
                 word_ids.append(int(x))
