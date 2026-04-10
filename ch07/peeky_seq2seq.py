@@ -25,11 +25,13 @@ class PeekyDecoder:
         for layer in (self.embed, self.lstm, self.affine):
             self.params += layer.params
             self.grads += layer.grads
+        self.cache = None
 
     def forward(self, xs, h):
         N, T = xs.shape
         N, H = h.shape
 
+        self.cache = H
         self.lstm.set_state(h)
 
         out = self.embed.forward(xs)
