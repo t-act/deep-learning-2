@@ -220,7 +220,7 @@ class LSTM:
         o = A[:, 3*H:]
         
         f = sigmoid(f)
-        g = sigmoid(g)
+        g = np.tanh(g)
         i = sigmoid(i)
         o = sigmoid(o)
 
@@ -312,9 +312,12 @@ class TimeLSTM:
             layer = self.layers[t]
             dx, dh, dc = layer.backward(dhs[:, t, :] + dh, dc)
             dxs[:, t, :] = dx
-            for i, grad in enumerate(grads):
-                self.grads[i][...] = grad
-    
+            for i, grad in enumerate(layer.grads):
+                grads[i] += grad
+
+        for i, grad in enumerate(grads):
+            self.grads[i][...] = grad
+
         self.dh = dh
         return dxs
     
