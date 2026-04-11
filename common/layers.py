@@ -129,7 +129,7 @@ class SigmoidWithLoss:
         dx = (self.y - self.t) * dout / batch_size
         return dx
 
-
+# @copied
 class Softmax:
     def __init__(self):
         self.params, self.grads = [], []
