@@ -42,7 +42,7 @@ class AttentionWeight:
         hr = h.reshape(N, 1, H).repeat(T, axis=1)
         t = hs * hr
         s = np.sum(t, axis=2)
-        a = self.softmax(s)  # 重みをsoftmax関数で正規化
+        a = self.softmax.forward(s)  # 重みをsoftmax関数で正規化
 
         self.cache = (hs, hr)
         return a

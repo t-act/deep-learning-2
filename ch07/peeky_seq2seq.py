@@ -3,7 +3,7 @@ import sys, os
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from common.time_layers import *
 from common.base_model import BaseModel
-from seq2seq import *
+from ch07.seq2seq import *
 
 class PeekyDecoder:
     def __init__(self, vocab_size, wordvec_size, hidden_size):
